@@ -18,20 +18,35 @@ Public web app to convert long text/Markdown into a **template‑faithful** Powe
 
 ## Project Structure
 text-to-pptx/
+
 ├─ backend/
+
 │  ├─ main.py
+
 │  ├─ llm_providers.py
+
 │  ├─ pptx_builder.py
+
 │  ├─ models.py
+
 │  ├─ security.py
+
 ├─ frontend/
+
 │  ├─ index.html
+
 │  ├─ app.js
+
 │  └─ styles.css
+
 ├─ .gitignore
+
 ├─ requirements.txt
+
 ├─ Dockerfile
+
 ├─ LICENSE
+
 └─ README.md
 
 
@@ -116,5 +131,6 @@ If you open the root at `http://127.0.0.1:8000`, you’ll see only the API. To l
 MIT licensed. PRs welcome!
 
 =======
+
 
 
