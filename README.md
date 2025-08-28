@@ -17,23 +17,24 @@ Public web app to convert long text/Markdown into a **template‑faithful** Powe
 - MIT License, ready for public deployment
 
 ## Project Structure
-text-to-pptx/
 
-├─ backend/
-│  ├─ main.py
-│  ├─ llm_providers.py
-│  ├─ pptx_builder.py
-│  ├─ models.py
-│  ├─ security.py
-├─ frontend/
-│  ├─ index.html
-│  ├─ app.js
-│  └─ styles.css
-├─ .gitignore
-├─ requirements.txt
-├─ Dockerfile
-├─ LICENSE
-└─ README.md
+```text
+text-to-pptx/
+├─ backend/                 # FastAPI backend logic
+│  ├─ main.py               # Entry point: FastAPI app, routes (/analyze, /generate)
+│  ├─ llm_providers.py      # LLM API calls (OpenAI / Anthropic / Gemini / AI Pipe)
+│  ├─ pptx_builder.py       # Builds PowerPoint from JSON + template
+│  ├─ models.py             # Pydantic models for request/response validation
+│  └─ security.py           # File size limits, API key masking, safety helpers
+├─ frontend/                # Static frontend served by FastAPI
+│  ├─ index.html            # Main HTML UI
+│  ├─ app.js                # Client logic: calls backend, handles preview/edit
+│  └─ styles.css            # Custom styling
+├─ .gitignore               # Ignore venv, cache, build outputs, *.pptx
+├─ requirements.txt         # Python dependencies
+├─ Dockerfile               # Container build instructions
+├─ LICENSE                  # MIT license
+└─ README.md                # Project documentation (this file)
 
 
 ## Quick Start (Local)
@@ -117,6 +118,7 @@ If you open the root at `http://127.0.0.1:8000`, you’ll see only the API. To l
 MIT licensed. PRs welcome!
 
 =======
+
 
 
 
