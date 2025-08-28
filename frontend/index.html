@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PPT Generator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>PPT Generator</h1>
+      <p>Paste text/Markdown, pick tone, upload a .pptx/.potx, and get a styled presentation. Keys are never stored.</p>
+    </header>
+
+    <section class="panel">
+      <label>Bulk Text / Markdown</label>
+      <textarea id="inputText" rows="10" placeholder="Paste your long-form text or Markdown here..."></textarea>
+
+      <div class="row">
+        <div class="col">
+          <label>Guidance (tone/use-case)</label>
+          <input id="guidance" placeholder="e.g., investor pitch deck" />
+        </div>
+
+        <div class="col">
+          <label>Provider</label>
+          <select id="provider">
+            <option value="openai">OpenAI</option>
+            <option value="anthropic">Anthropic</option>
+            <option value="gemini">Gemini</option>
+          </select>
+        </div>
+
+        <!-- Single model input with datalist -->
+        <div class="col">
+          <label>Model (optional)</label>
+          <input id="model" list="modelList" placeholder="e.g., openai/gpt-4o-mini" />
+          <datalist id="modelList"></datalist>
+          <small id="modelHelp" style="opacity:.8"></small>
+        </div>
+
+        <div class="col">
+          <label>API Key</label>
+          <input id="apiKey" type="password" placeholder="Your provider key" />
+        </div>
+      </div>
+
+      <div class="usecases">
+        <span class="chip" data-guidance="Investor pitch deck">Investor pitch</span>
+        <span class="chip" data-guidance="Sales deck with visuals">Sales deck</span>
+        <span class="chip" data-guidance="Academic research summary">Research summary</span>
+        <span class="chip" data-guidance="Executive summary for leadership">Executive summary</span>
+        <span class="chip" data-guidance="Technical architecture review">Technical review</span>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label>PowerPoint Template/Presentation (.pptx/.potx)</label>
+          <input id="templateFile" type="file" accept=".pptx,.potx" />
+          <small>Max 20 MB.</small>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="analyzeBtn">Analyze & Preview</button>
+      </div>
+
+      <div id="error" class="error" hidden></div>
+    </section>
+
+    <section id="preview" class="panel" hidden>
+      <h2>Slide Preview (editable)</h2>
+      <div id="slides" class="slides"></div>
+      <div class="actions">
+        <button id="downloadBtn">Generate & Download .pptx</button>
+      </div>
+    </section>
+
+    <footer>
+      <p>MIT Licensed • No keys stored • Built for template fidelity</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
