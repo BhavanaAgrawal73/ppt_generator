@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Text → PowerPoint (Template‑Aware)
 
 Public web app to convert long text/Markdown into a **template‑faithful** PowerPoint. Users paste text, add an optional tone/guidance, select their LLM (OpenAI/Anthropic/Gemini) with **their own key**, upload a **.pptx/.potx** template, preview the outline, and download a ready‑styled **.pptx** that inherits **styles, layouts, colors, fonts, and reuses images** from the uploaded file. **No AI image generation**.
@@ -81,3 +82,6 @@ If you open the root at `http://127.0.0.1:8000`, you’ll see only the API. To l
 ## Contributing
 
 MIT licensed. PRs welcome!
+=======
+# ppt_generator
+>>>>>>> c1b4499cd211976c0c3decca89983d266a7e58b7
