@@ -1,6 +1,6 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-# Text → PowerPoint (Template‑Aware)
+# PPT GENERATOR
+
+## Text → PowerPoint (Template‑Aware)
 
 Public web app to convert long text/Markdown into a **template‑faithful** PowerPoint. Users paste text, add an optional tone/guidance, select their LLM (OpenAI/Anthropic/Gemini) with **their own key**, upload a **.pptx/.potx** template, preview the outline, and download a ready‑styled **.pptx** that inherits **styles, layouts, colors, fonts, and reuses images** from the uploaded file. **No AI image generation**.
 
@@ -16,6 +16,25 @@ Public web app to convert long text/Markdown into a **template‑faithful** Powe
 - Robust errors, 20 MB upload cap, retries for LLM calls
 - MIT License, ready for public deployment
 
+## Project Structure
+text-to-pptx/
+├─ backend/
+│  ├─ main.py
+│  ├─ llm_providers.py
+│  ├─ pptx_builder.py
+│  ├─ models.py
+│  ├─ security.py
+├─ frontend/
+│  ├─ index.html
+│  ├─ app.js
+│  └─ styles.css
+├─ .gitignore
+├─ requirements.txt
+├─ Dockerfile
+├─ LICENSE
+└─ README.md
+
+
 ## Quick Start (Local)
 ```bash
 # 1) Clone
@@ -28,12 +47,24 @@ python -m venv .venv && source .venv/bin/activate  # Windows: .venv\\Scripts\\ac
 # 3) Install deps
 pip install -r requirements.txt
 
-# 4) Run server
+# 4) (optional) AI Pipe / gateway base for OpenAI-compatible calls
+export OPENAI_BASE="https://aipipe.org/openai/v1"   # or https://aipipe.org/openrouter/v1
+
+# 5) Run server
 uvicorn backend.main:app --host 0.0.0.0 --port 8000
 # Open http://127.0.0.1:8000/frontend/index.html  (or serve files from any static host)
-````
+```
 
 If you open the root at `http://127.0.0.1:8000`, you’ll see only the API. To load the UI directly, open the `frontend/index.html` file in your browser or serve the `frontend/` folder via any static server (e.g. VS Code Live Server).
+## Using AI Pipe (model names)
+  * Select Provider = OpenAI
+  * Use namespaced models like:
+    * openai/gpt-4o-mini (recommended)
+    * openai/gpt-4o, openai/gpt-4.1-mini, openai/gpt-3.5-turbo
+  * Put your AIPIPE_TOKEN in the app’s API Key box.
+## Other providers
+   * Anthropic: anthropic/claude-3-5-sonnet-latest, etc.
+   * Gemini: google/gemini-1.5-pro, google/gemini-1.5-flash
 
 ## Deploy (Render — recommended for non‑coders)
 
@@ -83,66 +114,7 @@ If you open the root at `http://127.0.0.1:8000`, you’ll see only the API. To l
 ## Contributing
 
 MIT licensed. PRs welcome!
+
 =======
-# ppt_generator
->>>>>>> c1b4499cd211976c0c3decca89983d266a7e58b7
-=======
-# PPT Generator — Text → PowerPoint (Template-Aware)
 
-Turn bulk text or Markdown into a fully styled PowerPoint that matches an uploaded `.pptx/.potx` template.  
-Keys are never stored. MIT Licensed.
 
-## Features
-- Paste long text/Markdown → intelligent slide split (5–20 slides)
-- Tone/use-case guidance (investor, exec, research, etc.)
-- Uses your uploaded PowerPoint template’s styles (colors, fonts, layouts, images)
-- Auto speaker notes via LLM
-- Preview + edit before download
-- Any LLM provider with your own key (OpenAI/Anthropic/Gemini or AI Pipe gateway)
-- Robust errors, size limits, retry logic
-
-## Quick Start (local)
-```bash
-# 1) install
-python -m venv .venv && source .venv/bin/activate   # Windows: .\.venv\Scripts\activate
-pip install -r requirements.txt
-
-# 2) (optional) AI Pipe / gateway base for OpenAI-compatible calls
-export OPENAI_BASE="https://aipipe.org/openai/v1"   # or https://aipipe.org/openrouter/v1
-
-# 3) run
-uvicorn backend.main:app --host 0.0.0.0 --port 8000
-# open http://127.0.0.1:8000/frontend/index.html
-Using AI Pipe (model names)
-Select Provider = OpenAI
-
-Use namespaced models like:
-
-openai/gpt-4o-mini (recommended)
-
-openai/gpt-4o, openai/gpt-4.1-mini, openai/gpt-3.5-turbo
-
-Put your AIPIPE_TOKEN in the app’s API Key box.
-
-Other providers
-Anthropic: anthropic/claude-3-5-sonnet-latest, etc.
-
-Gemini: google/gemini-1.5-pro, google/gemini-1.5-flash
-
-Frontend
-frontend/index.html, app.js, styles.css
-
-Served at /frontend by FastAPI
-
-API (brief)
-POST /analyze → returns slide outline JSON
-
-POST /generate → uploads template + outline → returns .pptx
-
-Deploy tips
-Commit requirements.txt
-
-Set OPENAI_BASE env if using a gateway
-
-Max template size defaults to 20 MB
->>>>>>> 05307551ba700fb1ce040ea94c7e001a7e4976ab
