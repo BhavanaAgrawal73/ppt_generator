@@ -35,10 +35,9 @@ text-to-pptx/
 ├─ Dockerfile               # Container build instructions
 ├─ LICENSE                  # MIT license
 └─ README.md                # Project documentation (this file)
+```
+##  Quick Start (Local)
 
-
-## Quick Start (Local)
-```bash
 # 1) Clone
 git clone https://github.com/YOUR-USER/text-to-pptx.git
 cd text-to-pptx
@@ -55,7 +54,7 @@ export OPENAI_BASE="https://aipipe.org/openai/v1"   # or https://aipipe.org/open
 # 5) Run server
 uvicorn backend.main:app --host 0.0.0.0 --port 8000
 # Open http://127.0.0.1:8000/frontend/index.html  (or serve files from any static host)
-```
+
 
 If you open the root at `http://127.0.0.1:8000`, you’ll see only the API. To load the UI directly, open the `frontend/index.html` file in your browser or serve the `frontend/` folder via any static server (e.g. VS Code Live Server).
 ## Using AI Pipe (model names)
@@ -118,6 +117,7 @@ If you open the root at `http://127.0.0.1:8000`, you’ll see only the API. To l
 MIT licensed. PRs welcome!
 
 =======
+
 
 
 
